@@ -1,0 +1,86 @@
+﻿
+    .blinking {
+    animation-duration: 1200ms;
+    animation-name: blink;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    -webkit-animation:blink 1200ms infinite; /* Safari and Chrome */
+}
+@keyframes blink {
+    from {
+        color:blue;
+    }
+    to {
+        color:red;
+    }
+}
+@-webkit-keyframes blink {
+    from {
+        color:blue;
+    }
+    to {
+        color:red;
+    }
+}
+    @media (min-width:200px)
+    {
+        footer
+        {
+            margin-top:23%;
+            
+         }
+         .footer p
+         {
+                font-size: 11px;
+                font-family: initial;
+         }
+    }
+    @media (max-width:350px )
+    {
+        footer
+        {
+            margin-top:25%;
+            
+         }
+         .footer p
+         {
+                font-size: 9px !important;
+                font-family: initial;
+         }
+    }
+    @media only screen and (min-width: 960px) {
+    
+      footer
+            {
+                margin-top:0%;
+            
+             }
+             .footer p
+             {
+                    font-size: 15px;
+                    font-family: initial;
+             }
+    }
+    
+    .fixed-top {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    background: #fff;
+}
+ .no-js #loader { display: none;  }
+            .js #loader { display: block; position: absolute; left: 100px; top: 0; }
+            .se-pre-con {
+                position: fixed;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                z-index: 9999999;
+                background: url(/Styles/Images/working.gif) center no-repeat #fff;
+            }
+   .disabledbutton {
+    pointer-events: none;
+    opacity: 0.4;
+}

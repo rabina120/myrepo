@@ -1,0 +1,1 @@
+.field-wrapper{position:relative;margin-bottom:20px}label{position:absolute;top:-13px;left:0;font-size:11px;color:#aaa;transition:all .1s linear;opacity:0;font-weight:b old}label.on{color:#4481c4}label.show{top:-15px;opacity:1}option{color:#000}.watermark{color:#aaa}body{padding:20px;-webkit-backface-visibility:hidden}

@@ -1,0 +1,455 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="Openend_SIP.Main" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+   
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+        name="viewport">
+    <meta name="referrer" content="no-referrer">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="AdminLTE/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="AdminLTE/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="AdminLTE/css/ionicons.min.css">
+    <!-- jvectormap -->
+    <link rel="stylesheet" href="AdminLTE/css/jquery-jvectormap.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="AdminLTE/css/AdminLTE.min.css">
+   
+    <link rel="stylesheet" href="AdminLTE/css/_all-skins.min.css">
+    <link href="/Styles/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Styles/custom/jquery.alerts.css" rel="stylesheet" />
+    <link href="/Styles/datatables.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Styles/css.css" rel="stylesheet" type="text/css" />
+    <link href="/Styles/buttons.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/Styles/custom/mdb.css" />
+    <link href="/Styles/css.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/Styles/custom/mdb.css"/>
+    <link href="/Styles/font.css" rel="stylesheet" type="text/css" />
+ 
+    <script src="/JsLibrary/jquery-3.5.1.js" type="text/javascript"></script>
+    <script src="/JsLibrary/jqueryAlerts.js" type="text/javascript"></script>
+    <script src="/JsLibrary/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="/JsLibrary/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="/JsLibrary/jquery-3.3.1.slim.min.js" type="text/javascript"></script>
+    <script src="/JsLibrary/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="/JsLibrary/knockout-3.1.0.js" type="text/javascript"></script>
+    <script src="/JsLibrary/Common.js" type="text/javascript"></script>
+    <script src="/JsLibrary/validation.js" type="text/javascript"></script>
+    <script src="/JsLibrary/knockout.validation.min.js" type="text/javascript"></script>
+    <script src="/JsLibrary/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="/JsLibrary/ValidationBinders.js" type="text/javascript"></script>
+    <script src="/JsLibrary/knockout.ajaxGrid.js" type="text/javascript"></script>
+    <script src="/JsLibrary/select2.min.js" type="text/javascript"></script>
+    <script src="/JsLibrary/tab.js" type="text/javascript"></script>
+    <script src="/JsLibrary/moment.min.js" type="text/javascript"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <script>
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        var applydate = yyyy + '-' + mm + '-' + dd; ;
+    </script>
+</head>
+<style type="text/css">
+    .jqstooltip
+    {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        visibility: hidden;
+        background: rgb(0, 0, 0) transparent;
+        background-color: rgba(0,0,0,0.6);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+        color: white;
+        font: 10px arial, san serif;
+        text-align: left;
+        white-space: nowrap;
+        padding: 5px;
+        border: 1px solid white;
+        box-sizing: content-box;
+        z-index: 10000;
+    }
+    .jqsfield
+    {
+        color: white;
+        font: 10px arial, san serif;
+        text-align: left;
+    }
+    
+.blinking {
+    animation-duration: 1200ms;
+    animation-name: blink;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    -webkit-animation:blink 1200ms infinite; /* Safari and Chrome */
+}
+@keyframes blink {
+    from {
+        color:blue;
+    }
+    to {
+        color:red;
+    }
+}
+@-webkit-keyframes blink {
+    from {
+        color:blue;
+    }
+    to {
+        color:red;
+    }
+}
+ .no-js #loader { display: none;  }
+            .js #loader { display: block; position: absolute; left: 100px; top: 0; }
+            .se-pre-con {
+                position: fixed;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                z-index: 9999999;
+                background: url(/Styles/Images/working.gif) center no-repeat #fff;
+            }
+	
+</style>
+<script>
+
+    // Wait for window load
+    $(window).load(function () {
+        // Animate loader off screen
+        $(".se-pre-con").fadeOut("slow");
+        ;
+    });
+        </script> 
+        <script>
+            $(function () {
+                $('.link').click(function () {
+                    $(this).addClass('selected');
+                });
+            });
+</script>
+<style>
+.link{border: 1px solid #fff;}
+.link:hover,.selected 
+  {
+-webkit-box-shadow: 0px 1px 13px 0px rgba(69,197,232,0.52);
+-moz-box-shadow: 0px 1px 13px 0px rgba(69,197,232,0.52);
+box-shadow: 0px 1px 13px 0px rgba(69,197,232,0.52);
+border: 1px solid #00adef;
+}
+</style>
+    <script type="text/javascript">
+        document.onkeydown = function (e) {
+            if (event.keyCode == 123) {
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+                return false;
+            }
+            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+                return false;
+            }
+        }
+    </script>
+<body class="skin-blue sidebar-mini" style="height: auto; min-height: 100%;" oncontextmenu="return true;">
+    <div class="wrapper" style="height: auto; min-height: 100%;">
+      <div class="se-pre-con">
+        </div>
+        <div style="display:none;" id="mask">
+            <div style="display:none;" id="loader">      
+            </div>
+        </div>
+        <header class="main-header">
+
+    <!-- Logo -->
+    <a href="" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><img src="" id="img4" /></span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><img src="" id="img1" /></span>
+    </a>
+
+    <!-- Header Navbar: style can be found in header.less -->
+  
+<nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      <img src="/Styles/Images/working.gif" id="loader2" alt="working" style="display:none; position: absolute;left: 47%;transform: translate(-17%, 224%);-ms-transform: translate(-50%, -50%);text-align: center;">
+<div class="navbar-custom-menu"  >
+        <ul class="nav navbar-nav">
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img class="user-image" src="/Styles/Images/UserLogo.png" />
+              <span class="hidden-xs"><span id="Name"></span></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="/Modules/Container/ChangeOldPassword.aspx"> <i class="fa fa-lock" aria-hidden="true"></i> Change Password</a></li>
+               <li><a href="/Modules/Container/TransactionPin.aspx"> <i class="fa fa-lock" aria-hidden="true"></i> Change Transaction Pin</a></li>
+              <li><a href="/Modules/MainPage/Login.aspx"> <i class="fa fa-power-off" aria-hidden="true"></i> Logout</a></li>
+ 
+
+            </ul>
+          </li>
+        </ul>
+      </div>
+     
+      <div class="" style="text-align:center; /*! line-height:45px; */margin-top: 1%;"> NIBL Sahabhagita Fund <span class="blinking"> [ Current NAV: <span id="current_nav"></span> ] </span> As on <span id="date"></span></div>
+      <!-- Navbar Right Menu -->
+      
+      
+
+
+  </div>
+    </nav>
+  </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <ul class="sidebar-menu" data-widget="tree">
+       <li style="height: auto;">
+          <a href="/Modules/DashBoard.aspx">
+            <i class="fa fa-home" aria-hidden="true"></i>
+            <span>Dashboard</span>
+            <span class="pull-right-container">
+              <%--<i class="fa fa-angle-left pull-right"></i>--%>
+            </span>
+          </a>
+        </li>
+       <li>
+          <a href="/Modules/Container/Detail.aspx">
+            <i class="fa fa-credit-card" aria-hidden="true"></i>
+            <span>My Details</span>
+            <span class="pull-right-container"> </span>
+          </a>
+       </li>
+      <li class="treeview" style="height: auto;">
+          <a href="#">
+          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            <span>UNIT PURCHASE</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu" style="display: none;">
+             <li><a href="/Modules/RequestHandling/PurchaseRequestEntry.aspx"><i class="fa fa-angle-double-right"></i> UNIT PURCHASE REQUEST</a></li>
+             <li><a href="/Modules/RequestHandling/UnitPurchaseStatement.aspx"><i class="fa fa-angle-double-right"></i> UNIT PURCHASE STATEMENT</a></li>
+          </ul>
+        </li>
+        <li class="treeview" style="height: auto;">
+          <a href="#">
+          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            <span>UNIT REDEMPTION</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu" style="display: none;">
+             <li><a href="/Modules/RequestHandling/UnitRedemption.aspx"><i class="fa fa-angle-double-right"></i> UNIT REDEMPTION REQUEST</a></li>
+            
+          </ul>
+        </li>
+        <li class="treeview" style="height: auto;">
+          <a href="#">
+            <i class="fa fa-fw fa-star"></i>
+            <span>SIP</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu"  id ="SIP">
+         </ul>
+        </li>
+        <li class="treeview" style="height: auto;">
+          <a href="#">
+            <i class="fa fa-fw fa-star"></i>
+            <span>Dividend Re-Investment</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu" style="display: none;">
+
+             <li><a href="/Modules/MainPage/DividendReInvestment.aspx"><i class="fa fa-angle-double-right"></i> DREP Registration</a></li>           
+
+         </ul>
+        </li>
+       
+
+
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+        <div style="display: none">
+               <span id="current_nav"></span><span id="UserId" style="display: none"></span><span
+                id="scheme_code" style="display: none"></span><span id="UserName" style="display: none">
+                </span><span id="date" style="display: none"></span><span id="l_company_id" style="display: none">
+                </span><span id="BOID" style="display: none"></span><span id="Email" style="display: none">
+                </span><span id="SHHOLDERNO" style="display: none"></span>
+                <span id="Contact_No" style="display: none"></span>
+                <span id="Contact_No2" style="display: none"></span>
+                <span id="UserId" style="display: none"></span>
+
+                <span style="display:none;" id="token"></span>
+        </div>
+        <div id="page-wrapper" class="content-wrapper" style="min-height: 926px; padding-bottom: 25px;">
+            <div class="container-fluid">
+             <div id="outerLoader">
+    </div>
+    
+    </div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+       
+        <div class="clear">
+        </div>
+    </div>
+     <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      Designed and Developed by PCS
+    </div>
+    Copyright &copy;<span id="company"></span>  Limited 2020 All Right Reserved. 
+  </footer>
+    <script src="/AdminLTE/js/jquery.min.js" type="text/javascript"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="/AdminLTE/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- FastClick -->
+    <script src="/AdminLTE/js/fastclick.js" type="text/javascript"></script>
+    <!-- AdminLTE App -->
+    <script src="/AdminLTE/js/adminlte.min.js" type="text/javascript"></script>
+    <!-- Sparkline -->
+    <script src="/AdminLTE/js/jquery.sparkline.min.js" type="text/javascript"></script>
+    <!-- jvectormap  -->
+    <script src="/AdminLTE/js/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script>
+    <script src="/AdminLTE/js/jquery-jvectormap-world-mill-en.js" type="text/javascript"></script>
+    <!-- SlimScroll -->
+    <script src="/AdminLTE/js/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <!-- ChartJS -->
+    <script src="/AdminLTE/js/Chart.js" type="text/javascript"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="/AdminLTE/js/dashboard2.js" type="text/javascript"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="/AdminLTE/js/demo.js" type="text/javascript"></script>
+
+    <%-- <script>
+         waitMsg.show1();
+         $.ajax({
+
+             dataType: "json",
+             cache: false,
+             async: false,
+             url: '/Handler/Security/ColorHandling.ashx',
+             data: { 'method': 'ColorCode' },
+             contentType: "application/json; charset=utf-8",
+             success: function (result) {
+                                
+                 result = result.ResponseData[0]
+                 $('.skin-blue .main-sidebar, .skin-blue .wrapper').css("background", result.Navcolor);
+                 $(".btn-primary").css("background", result.BackgroundColor);
+                 $(".btn-primary").css(" border", result.Color);
+                 $("#img1").attr("src", result.logo1);
+                 $("#img2").attr("src", result.logo2);
+                 $("#img4").attr("src", result.midImage);
+                 $('#company').text(result.Name);
+
+                 //$('th').css('background', result.theadColor);
+                 $('#borderColor').text(result.BackgroundColor);
+                 // $("h4").css("background", result.BackgroundColor);
+                 document.title = $('title').text() + result.Name;
+                 waitMsg.hide();
+
+             },
+             error: function () {
+                 console.log("error", error);
+             }
+         });
+         waitMsg.hide1();
+         $('.form-control').focus(
+            function () {
+                $(this).css('border-color', $('#borderColor').text());
+
+            }).blur(
+                function () {
+                    $(this).css('border-color', '1px solid #ccc');
+                });
+
+         $('.form-control').focusout(
+             function () {
+                 $(this).css('border-color', '#ccc');
+
+             })
+    </script>--%>
+   <script type="text/javascript">
+
+       const BackgroundColor = "#1e4483";
+       const Color = "#1e4483"
+       const Name = "NIBL Ace Capital";
+       const HoverColor = null;
+       const Navcolor = "#1e4483";
+       const TextColor = "#1e4483";
+       const logo1 = "/Styles/NIBLImages/NIBL-logo2.png";
+       const logo2 = "/Styles/NIBLImages/logo-nibl.png";
+       const logo3 = "/Styles/NIBLImages/1stopenendedmutualfund.png";
+       const midImage = "/Styles/NIBLImages/logonibl.jpg";
+       const theadColor = "#1e4483";
+
+
+       $("footer .footer p, .navbar-default, .navbar-header, .navbar-default .navbar-collapse, .navbar-default .navbar-form").css(BackgroundColor)
+
+       $(".btn-primary").css("background", BackgroundColor);
+       $("h4").css("background", BackgroundColor)
+       $("#title").text(Name)
+       $("#img1").attr("src", logo1)
+       $("#img2").attr("src", logo2);
+       $('th').css('background', theadColor);
+       $(".btn").css("background", BackgroundColor);
+       $('#borderColor').text(BackgroundColor)
+       $('.carousel-indicators li').css('background', theadColor);
+
+
+
+
+       $('.form-control').focus(
+           function () {
+               $(this).css('border-color', $('#borderColor').text());
+
+           }).blur(
+               function () {
+                   $(this).css('border-color', '1px solid #ccc');
+               });
+
+       $('.form-control').focusout(
+           function () {
+               $(this).css('border-color', '#ccc');
+
+           })
+   </script>
+    <script src="/JsLibrary/datatables.min.js" type="text/javascript"></script>
+    <script src="/JsLibrary/dataTables.buttons.min.js" type="text/javascript"></script>
+    <script src="/JsLibrary/jszip.min.js" type="text/javascript"></script>
+    <script src="/JsLibrary/buttons.html5.min.js" type="text/javascript"></script>
+    <script src="/Scripts/MenuControl.js" type="text/javascript"></script>
+
+      <script type="text/javascript">
+          GetNav();
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,68 @@
+﻿  .jqstooltip
+    {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        visibility: hidden;
+        background: rgb(0, 0, 0) transparent;
+        background-color: rgba(0,0,0,0.6);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+        color: white;
+        font: 10px arial, san serif;
+        text-align: left;
+        white-space: nowrap;
+        padding: 5px;
+        border: 1px solid white;
+        box-sizing: content-box;
+        z-index: 10000;
+    }
+    .jqsfield
+    {
+        color: white;
+        font: 10px arial, san serif;
+        text-align: left;
+    }
+    
+.blinking {
+    animation-duration: 1200ms;
+    animation-name: blink;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    -webkit-animation:blink 1200ms infinite; /* Safari and Chrome */
+}
+@keyframes blink {
+    from {
+        color:blue;
+    }
+    to {
+        color:red;
+    }
+}
+@-webkit-keyframes blink {
+    from {
+        color:blue;
+    }
+    to {
+        color:red;
+    }
+}
+ .no-js #loader { display: none;  }
+            .js #loader { display: block; position: absolute; left: 100px; top: 0; }
+            .se-pre-con {
+                position: fixed;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                z-index: 9999999;
+                background: url(/Styles/Images/working.gif) center no-repeat #fff;
+            }
+.link{border: 1px solid #fff;}
+.link:hover,.selected 
+  {
+-webkit-box-shadow: 0px 1px 13px 0px rgba(69,197,232,0.52);
+-moz-box-shadow: 0px 1px 13px 0px rgba(69,197,232,0.52);
+box-shadow: 0px 1px 13px 0px rgba(69,197,232,0.52);
+border: 1px solid #00adef;
+}

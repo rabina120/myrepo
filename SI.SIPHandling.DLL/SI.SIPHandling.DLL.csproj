@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DAF1A1B2-5F57-46B3-9526-92166816E666}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SI.SIPHandling.DLL</RootNamespace>
+    <AssemblyName>SI.SIPHandling.DLL</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http">
+      <HintPath>C:\Users\admin\Desktop\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading">
+      <HintPath>C:\Users\admin\Desktop\System.Threading.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="DLLAmendmentRequest.cs" />
+    <Compile Include="DLLAmountCollection.cs" />
+    <Compile Include="DLLHolderStatementReport.cs" />
+    <Compile Include="DLLRegCompany.cs" />
+    <Compile Include="DLLSIPAmendmentReport.cs" />
+    <Compile Include="DLLSIPPayment.cs" />
+    <Compile Include="DLLSIPPurchaseReqReport.cs" />
+    <Compile Include="DLLSIPPurchaseRequest.cs" />
+    <Compile Include="DLLSIPRegistrationCancellation.cs" />
+    <Compile Include="DLLSipRegistrationReport.cs" />
+    <Compile Include="DLLSIP_Registration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SI.KYC.ATT\SI.KYC.ATT.csproj">
+      <Project>{E312CA7D-D991-418E-96A9-1AF2287D42EC}</Project>
+      <Name>SI.KYC.ATT</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SI.SIPHandling.ATT\SI.SIPHandling.ATT.csproj">
+      <Project>{F1166116-1855-4348-AF62-67E5E641D575}</Project>
+      <Name>SI.SIPHandling.ATT</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SI.Utility\SI.Utility.csproj">
+      <Project>{BF03EB7B-66AF-49FB-86E7-367C5370F5F2}</Project>
+      <Name>SI.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,268 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="LoginMaster.master.cs"
+    Inherits="Openend_SIP.LoginMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="referrer" content="no-referrer"/>
+    <link href="/Styles/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link href="/Styles/smartpaginator.css" rel="stylesheet" type="text/css" />
+    <link href="/Styles/select2.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Styles/nibl-style.css" rel="stylesheet" type="text/css" />
+    <link href="/Styles/custom/jquery.alerts.css" rel="stylesheet" />
+    <link href="/Styles/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Styles/datatables.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Styles/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Styles/buttons.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Styles/Master/LoginMaster.css" rel="stylesheet" type="text/css" />
+    <link href="/Styles/Loading.css" rel="stylesheet" type="text/css" />
+</head>
+<body oncontextmenu="return true;">
+
+    <script src="/JsLibrary/jquery-3.3.1.slim.min.js" type="text/javascript"></script>
+    <script src="/JsLibrary/jqueryAlerts.js" type="text/javascript"></script>
+    <script src="/JsLibrary/jquery_menus.js" type="text/javascript"></script>
+    <script src="/JsLibrary/jquery.smartmenus.js" type="text/javascript"></script>
+    <script src="/JsLibrary/knockout-3.1.0.js" type="text/javascript"></script>
+    <script src="/JsLibrary/bootstrap.min.js" type="text/javascript"></script>
+
+    <script src="/JsLibrary/select2.min.js" type="text/javascript"></script>
+    <script src="/JsLibrary/Common.js" type="text/javascript"></script>
+    <script src="/JsLibrary/validation.js" type="text/javascript"></script>
+    <script src="/JsLibrary/knockout.validation.min.js" type="text/javascript"></script>
+    <script src="/JsLibrary/jquery.dropdownPlain.js" type="text/javascript"></script>
+    <script src="/JsLibrary/ValidationBinders.js" type="text/javascript"></script>
+    <script src="/JsLibrary/moment.min.js" type="text/javascript"></script>
+    <script src="/JsLibrary/datatables.min.js" type="text/javascript"></script>
+    <script src="/JsLibrary/dataTables.buttons.min.js" type="text/javascript"></script>
+    <script src="/JsLibrary/buttons.html5.min.js" type="text/javascript"></script>
+    <script src="/JsLibrary/aes.js" type="text/javascript"></script>
+    <script type="text/javascript">
+          document.onkeydown = function (e) {
+              if (event.keyCode == 123) {
+                  return false;
+              }
+              if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+                  return false;
+              }
+              if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+                  return false;
+              }
+              if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+                  return false;
+              }
+              if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+                  return false;
+              }
+          }
+    </script>
+    <script>
+        // Wait for window load
+        $(window).load(function () {
+            // Animate loader off screen
+            $(".se-pre-con").fadeOut("slow");
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var fullDate = new Date();
+            var twoDigitMonth = (fullDate.getMonth() + 1) + ""; if (twoDigitMonth.length == 1) twoDigitMonth = "0" + twoDigitMonth;
+            var twoDigitDate = fullDate.getDate() + ""; if (twoDigitDate.length == 1) twoDigitDate = "0" + twoDigitDate;
+            var currentDate = fullDate.getFullYear() + "-" + twoDigitMonth + "-" + twoDigitDate;
+            $("#date").text(currentDate);
+            GetMenus();
+
+        });
+    </script>
+    
+    <div class="se-pre-con">
+    </div>
+    <div style="display: none;" id="mask">
+        <div style="display: none;" id="loader">
+        
+        </div>
+    </div>
+      <span style="display:none;" id="token"></span>
+    <header class="header clearfix fixed-top">
+  <div class="container padding-15">
+
+       <a class=" col-xs-6 col-sm-6 col-md-4 col-lg-4" href="/Modules/HomePage.aspx"><img class=" img-responsive" src=""  id="img1" /></a>
+       <div class=" col-xs-6 col-sm-6 col-md-4 col-lg-4" href="">
+       <img src="/Styles/Images/working.gif" id="loader2" alt="working" style="display:none; position: absolute;left: 47%;transform: translate(-50%, -19%);-ms-transform: translate(-50%, -50%);text-align: center;">
+       <h2><span id="market" class="blinking"></span></h2></div>
+  <a class="col-xs-6 col-sm-6 col-md-4 col-lg-4 pull-right"  href="" class="website"><img class=" img-responsive" src="" id="img2"  /></a>
+  </div>
+   <div id="outerLoader">
+    </div>
+
+       <nav class="navbar navbar-default navbar-fixed-top">
+           <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav" style=" margin-top:0px;" id ="menu">
+    <%--    <li><a  href="/Modules/MainPage/UnitPurchase.aspx"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Unit Purchase</a></li>
+        <li><a  href="/Modules/MainPage/SIPRegistration.aspx"><i class="fa fa-edit" aria-hidden="true"></i> SIP Registration</a></li>
+        <li><a  href="/Modules/MainPage/SIPPayment.aspx"><i class="fa fa-money" aria-hidden="true"></i> SIP Payment</a></li>
+        <li><a  href="/Modules/MainPage/DREPRegistration.aspx"><i class="fa fa-dollar" aria-hidden="true"></i> Dividend Re-Investment</a></li>
+        <li><a  href="/Modules/MainPage/SignUp.aspx"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign Up</a></li>
+        <li><a  href="/Modules/MainPage/Login.aspx"><i class="fa fa-power-off" aria-hidden="true"></i> Login</a></li>
+        <li></li>--%>
+      </ul>
+      
+    </div>
+    
+  </div>
+      </nav>
+  </header>
+    <div class="container-fluid" style="margin-top: 110px;">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    <%--</div>
+    </div>--%>
+    <footer style="">
+            <div class="footer" style="position: absolute ">
+       
+               <p> <span id="footerDetails"></span> <a target="_blank" class="website" href="">Website</a> </p>
+            
+            </div>
+
+            <div class="clear"></div>
+        </footer>
+       
+</body>
+
+ 
+
+<script>
+    $(document).ready(function () {
+        var footer = "" + '<%=ConfigurationManager.AppSettings["EmailKey2"].ToString() %>'
+    + ' <%=ConfigurationManager.AppSettings["EmailKey3"].ToString() %>'
+    + ' <%=ConfigurationManager.AppSettings["EmailKey4"].ToString() %>'
+    + ' <%=ConfigurationManager.AppSettings["EmailKey5"].ToString() %>'
+    + ' <%=ConfigurationManager.AppSettings["EmailKey6"].ToString() %>'
+
+        document.getElementById("footerDetails").innerHTML = footer
+
+        $(".website").attr("href", '<%=ConfigurationManager.AppSettings["Website"].ToString() %>')
+    });
+</script>
+
+<%-- <script type="text/javascript">
+     //waitMsg.show1();
+
+     //$("footer .footer p, .navbar-default, .navbar-header, .navbar-default .navbar-collapse, .navbar-default .navbar-form").css("background", result.BackgroundColor)
+     //$(".btn-primary").css("background", result.BackgroundColor);
+     //$("h4").css("background", result.BackgroundColor)
+     //$("#title").text(result.Name)
+     //$("#img1").attr("src", result.logo1)
+     //$("#img2").attr("src", result.logo2);
+     //$('th').css('background', result.theadColor);
+     //$(".btn").css("background", result.BackgroundColor);
+     //$('#borderColor').text(result.BackgroundColor)
+     //$('.carousel-indicators li').css('background', result.theadColor);
+
+     $.ajax({
+
+         dataType: "json",
+         cache: false,
+         async: false,
+         url: '/Handler/Security/ColorHandling.ashx',
+         data: { 'method': 'ColorCode' },
+         contentType: "application/json; charset=utf-8",
+         success: function (result) {
+           
+             result = result.ResponseData[0]
+             $("footer .footer p, .navbar-default, .navbar-header, .navbar-default .navbar-collapse, .navbar-default .navbar-form").css("background", result.BackgroundColor)
+             $(".btn-primary").css("background", result.BackgroundColor);
+             $("h4").css("background", result.BackgroundColor)
+             $("#title").text(result.Name)
+             $("#img1").attr("src", result.logo1)
+             $("#img2").attr("src", result.logo2);
+             $('th').css('background', result.theadColor);
+             $(".btn").css("background", result.BackgroundColor);
+             $('#borderColor').text(result.BackgroundColor)
+             $('.carousel-indicators li').css('background', result.theadColor);
+
+             document.title = $('title').text() + result.Name
+         },
+         error: function () {
+             console.log("error", error);
+         }
+
+     });
+     waitMsg.hide1();
+
+     $('.form-control').focus(
+            function () {
+                $(this).css('border-color', $('#borderColor').text());
+
+            }).blur(
+                function () {
+                    $(this).css('border-color', '1px solid #ccc');
+                });
+
+     $('.form-control').focusout(
+             function () {
+                 $(this).css('border-color', '#ccc');
+
+             })
+ </script>--%>
+    <script type="text/javascript">
+
+        const BackgroundColor = "#1e4483";
+        const Color = "#1e4483"
+        const Name = "NIBL Ace Capital";
+        const HoverColor = null;
+        const Navcolor = "#1e4483";
+        const TextColor = "#1e4483";
+        const logo1 = "/Styles/NIBLImages/NIBL-logo2.png";
+        const logo2 = "/Styles/NIBLImages/logo-nibl.png";
+        const logo3 = "/Styles/NIBLImages/1stopenendedmutualfund.png";
+        const midImage = "/Styles/NIBLImages/logonibl.jpg";
+        const theadColor = "#1e4483";
+
+
+        $("footer .footer p, .navbar-default, .navbar-header, .navbar-default .navbar-collapse, .navbar-default .navbar-form").css(BackgroundColor)
+
+        $(".btn-primary").css("background", BackgroundColor);
+        $("h4").css("background", BackgroundColor)
+        $("#title").text(Name)
+        $("#img1").attr("src", logo1)
+        $("#img2").attr("src", logo2);
+        $('th').css('background', theadColor);
+        $(".btn").css("background", BackgroundColor);
+        $('#borderColor').text(BackgroundColor)
+        $('.carousel-indicators li').css('background', theadColor);
+
+
+
+
+        $('.form-control').focus(
+            function () {
+                $(this).css('border-color', $('#borderColor').text());
+
+            }).blur(
+                function () {
+                    $(this).css('border-color', '1px solid #ccc');
+                });
+
+        $('.form-control').focusout(
+            function () {
+                $(this).css('border-color', '#ccc');
+
+            })
+    </script>
+</html>
